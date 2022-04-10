@@ -1,0 +1,6 @@
+#Ignore venv
+venv
+
+#Ignore pycache
+website/__pycache__
+website/*.pyc
