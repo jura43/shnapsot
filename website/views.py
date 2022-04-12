@@ -21,3 +21,8 @@ def login():
 @views.route('/register')
 def register():
     return render_template('register.html')
+
+@views.route('/demo')
+def demo():
+    return render_template('demo_chat.html')
+
