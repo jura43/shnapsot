@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}<title>Shnapsot - Registration</title>{% endblock %}
 {% block active_register %} active"{% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+<div class="row g-0 flex-grow-1">
+    <div class="col-lg-4 col-md-6 col-sm-8 mx-auto gx-5 form-box">
+        {% meld 'registration' %}
+    </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% meld_scripts %}
+{% endblock %}

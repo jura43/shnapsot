@@ -9,4 +9,4 @@ def handleMessage(msg):
     send(msg, broadcast=True)
 
 if __name__ == '__main__':
-    app.run(start_app().app, debug=True)
+    app.run(start_app().app, debug=True, host='0.0.0.0')

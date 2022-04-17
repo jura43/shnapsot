@@ -1,0 +1,22 @@
+<div class="bg-secondary p-4 rounded">
+    <form method="POST">
+        <div class="mb-4 mt-3">
+            {{ form.username.label(class_='form-label fs-5') }}
+            {{ form.username(class='form-control') }}
+            <span class="failed-field">{{ errors.username | first }}</span>
+        </div>
+        <div class="mb-4">
+            {{ form.password.label(class_='form-label fs-5') }}
+            {{ form.password(class='form-control') }}
+            <span class="failed-field">{{ errors.password | first }}</span>
+        </div>
+        <div class="mb-4">
+            {{ form.password_repeat.label(class_='form-label fs-5') }}
+            {{ form.password_repeat(class_='form-control') }}
+            <span class="failed-field">{{ errors.password_repeat | first }}</span>
+        </div>
+        <div class="mb-3 mx-auto text-center">
+            {{ form.submit(class='btn btn-primary fs-5') }}
+        </div>
+    </form>
+</div>
