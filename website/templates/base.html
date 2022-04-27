@@ -10,8 +10,8 @@
 </head>
 <body>
 <div class="container-fluid h-100 g-0 d-flex flex-column">
-<div class="row g-2">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="row g-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-2">
         <div class="container-fluid d-flex">
             <a class="navbar-brand" href="/">Shnapsot</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -24,7 +24,16 @@
                     <a class="nav-link{% block active_users%}"{% endblock %} href="/users">Users</a>
                 </li>
             </ul>
-            {% if True %}
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link{% block active_user%}"{% endblock %} href="/user/{{ user.id }}">{{ user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+            {% else %}
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link{% block active_login%}"{% endblock %} href="/login">Login</a>
@@ -32,7 +41,7 @@
                 <li class="nav-item">
                     <a class="nav-link{% block active_register%}"{% endblock %} href="/register">Register</a>
                 </li>
-            </ul> 
+            </ul>
             {% endif %}
             
             </div>

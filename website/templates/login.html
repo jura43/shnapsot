@@ -9,12 +9,24 @@
                 <div class="mb-4 mt-3">
                     {{ login.username.label(class_='form-label fs-5') }}
                     {{ login.username(class='form-control') }}
-                    <span class="failed-field">{{ errors.username | first }}</span>
+                    <span class="failed-field">{{ login.username.errors | first }}</span>
                 </div>
                 <div class="mb-4">
                     {{ login.password.label(class_='form-label fs-5') }}
                     {{ login.password(class='form-control') }}
-                    <span class="failed-field">{{ errors.password | first }}</span>
+                    <span class="failed-field">{{ login.password.errors | first }}</span>
+                    <div id="emailHelp" class="form-text"><a href="#" class="link-light">Forgot your password?</a></div>
+                    <span class="failed-field"></span>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        {% if category == 'error' %}
+                        <span class="failed-field">{{ message }}</span>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
                 </div>
                 <div class="mb-3 mx-auto text-center">
                     {{ login.submit(class='btn btn-primary fs-5') }}
