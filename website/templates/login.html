@@ -2,31 +2,32 @@
 {% block title %}<title>Shnapsot - Login</title>{% endblock %}
 {% block active_login %} active"{% endblock %}
 {% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+            {% else %}
+                <div class="alert alert-success alert-dismissable fade show" role="alert">{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>  
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <div class="row g-0 flex-grow-1">
     <div class="col-lg-4 col-md-6 col-sm-8 mx-auto gx-5 form-box">
         <div class="bg-secondary p-4 rounded">
+            <h3 class="text-light" align="center">Login</h3>
             <form method="POST">
                 <div class="mb-4 mt-3">
                     {{ login.username.label(class_='form-label fs-5') }}
                     {{ login.username(class='form-control') }}
-                    <span class="failed-field">{{ login.username.errors | first }}</span>
                 </div>
                 <div class="mb-4">
                     {{ login.password.label(class_='form-label fs-5') }}
                     {{ login.password(class='form-control') }}
-                    <span class="failed-field">{{ login.password.errors | first }}</span>
                     <div id="emailHelp" class="form-text"><a href="#" class="link-light">Forgot your password?</a></div>
-                    <span class="failed-field"></span>
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category, message in messages %}
-                        {% if category == 'error' %}
-                        <span class="failed-field">{{ message }}</span>
-                        {% else %}
-                        {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    {% endwith %}
                 </div>
                 <div class="mb-3 mx-auto text-center">
                     {{ login.submit(class='btn btn-primary fs-5') }}

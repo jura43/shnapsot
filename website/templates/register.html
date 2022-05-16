@@ -2,12 +2,44 @@
 {% block title %}<title>Shnapsot - Registration</title>{% endblock %}
 {% block active_register %} active"{% endblock %}
 {% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissable fade show" role="alert">{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+            {% else %}
+                <div class="alert alert-success alert-dismissable fade show" role="alert">{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>  
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <div class="row g-0 flex-grow-1">
     <div class="col-lg-4 col-md-6 col-sm-8 mx-auto gx-5 form-box">
-        {% meld 'registration' %}
+        <div class="bg-secondary p-4 rounded">
+            <h3 class="text-light" align="center">Register</h3>
+            <form method="POST" id="register-form">
+                <div class="mb-4 mt-3">
+                    {{ register.username.label(class_='form-label fs-5') }}
+                    {{ register.username(class='form-control') }}
+                </div>
+                <div class="mb-4">
+                    {{ register.password.label(class_='form-label fs-5') }}
+                    {{ register.password(class='form-control') }}
+                </div>
+                <div class="mb-4">
+                    {{ register.password_repeat.label(class_='form-label fs-5') }}
+                    {{ register.password_repeat(class_='form-control') }}
+                    <div id="emailHelp" class="form-text text-light">Already have account? Login <a href="{{ url_for('auth.login') }}" class="link-light">here</a>.</div>
+                </div>
+                <div class="mb-3 mx-auto text-center">
+                    {{ register.submit(class='btn btn-primary fs-5') }}
+                </div>
+            </form>
+        </div>
     </div>
-    </div>
+</div>
 {% endblock %}
 {% block scripts %}
-{% meld_scripts %}
 {% endblock %}

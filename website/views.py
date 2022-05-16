@@ -20,5 +20,4 @@ def users():
 
 @views.route('/demo')
 def demo():
-    return render_template('demo_chat.html')
-
+    return render_template('demo_chat.html', user=current_user)

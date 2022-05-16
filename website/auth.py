@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, redirect, flash
 from flask_login import current_user, login_required, login_user, logout_user
 from forms.login_form import LoginForm
+from forms.registration_form import RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms.password_checker import password_checker
 from models.model import Users
@@ -39,6 +40,9 @@ def logout():
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
+
+    register = RegistrationForm()
+
     if current_user.is_authenticated:
         return redirect(url_for('views.users'))
 
@@ -59,10 +63,10 @@ def register():
         elif password != password_repeat:
             flash("Passwords must match")
         else:    
-            new_user = Users(username=username, password=generate_password_hash(password, method='sha256'))
+            """ new_user = Users(username=username, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
-            db.session.commit()
-            flash('Account created!', category='success')
+            db.session.commit() """
+            flash('Account successfully created! You can login now', category='success')
             return redirect(url_for('auth.login'))
 
-    return render_template('register.html')
+    return render_template('register.html', register=register, user=current_user)
