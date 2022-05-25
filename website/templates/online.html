@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+<link href="{{ url_for('static', filename='css/chat.css') }}" rel="stylesheet">
+<title>Shnapsot - Online users</title>
+{% endblock %}
+{% block active_online %} active"{% endblock %}
+{% block content %}
+<div class="row g-0 flex-grow-1">
+    <div class="col-lg-2 border">
+        <h4>List of online clients</h4>
+        <div id="client-list" class="d-grid gap-2 mx-auto">
+            <button type="button" class="btn btn-secondary" id="default" onclick="openChat('general')">General</button>
+        </div>
+    </div>
+    <div class="col">
+        <div class="border border-secondary rounded chat-box" id="general">
+        </div>
+        <div>
+            <input type="text" name="" id="myMessage">
+            <button id="sendbutton" type="sendbutton">Send</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

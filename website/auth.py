@@ -63,9 +63,9 @@ def register():
         elif password != password_repeat:
             flash("Passwords must match")
         else:    
-            """ new_user = Users(username=username, password=generate_password_hash(password, method='sha256'))
+            new_user = Users(username=username, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
-            db.session.commit() """
+            db.session.commit()
             flash('Account successfully created! You can login now', category='success')
             return redirect(url_for('auth.login'))
 

@@ -28,6 +28,7 @@ def users():
 def user(user_id):
     return render_template('user.html', user=current_user)
 
-@views.route('/demo')
-def demo():
-    return render_template('demo_chat.html', user=current_user)
+@views.route('/online')
+@login_required
+def online():
+    return render_template('online.html', user=current_user)

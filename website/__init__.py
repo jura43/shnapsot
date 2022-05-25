@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 db = SQLAlchemy()
-socketio = SocketIO()
+socketio = SocketIO(logger=True)
 
 def start_app():
     app = Flask(__name__)
