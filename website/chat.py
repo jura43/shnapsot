@@ -34,7 +34,7 @@ def disconnect():
     emit('leave_announcement', data, broadcast=True)
 
 
-@socketio.on('tooltip', namespace='/private')
-def tooltip(data):
+@socketio.on('sin', namespace='/private')
+def sin(data):
     recepient = users_priv[data['recepient']]
-    emit('notification', data, to=recepient)
+    emit('ack', data, to=recepient)

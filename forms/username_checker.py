@@ -2,7 +2,7 @@ import re
 
 def username_checker(username):
     """
-    Verify is 'username' contains any else than letters and numbers
+    Verify if 'username' contains anything other than letters and numbers
     Returns True if string contains anything other than letters or numbers
     """
 
